@@ -1,0 +1,183 @@
+/* Reset and font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-image: url("https://images.unsplash.com/photo-1581090700227-1e8bfe7eb1b0?auto=format&fit=crop&w=1500&q=80");
+  background-size: cover;
+  background-blend-mode: overlay;
+  transition: background 0.5s ease;
+}
+
+/* Container */
+.container {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px 40px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.8s ease-out;
+}
+
+/* Heading */
+.container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  border-color: #4facfe;
+  outline: none;
+  transform: scale(1.02);
+}
+
+button {
+  background-color: #4facfe;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #00c6ff;
+  transform: scale(1.05);
+}
+
+#expense-list {
+  list-style: none;
+  margin-top: 10px;
+}
+
+#expense-list li {
+  background: #f5f5f5;
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: fadeIn 0.4s ease-in;
+}
+
+#expense-list li button {
+  background-color: #ff6b6b;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.8em;
+  transition: 0.2s;
+  border: none;
+  color: white;
+}
+
+#expense-list li button:hover {
+  background-color: #ff4c4c;
+}
+
+#total {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#total h3 {
+  color: #333;
+}
+
+/* Toggle switch */
+.switch {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 28px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 34px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+}
+
+.slider:before {
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #4facfe;
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+/* Dark Mode */
+body.dark {
+  background: #121212;
+  background-image: none;
+  color: #f0f0f0;
+}
+
+body.dark .container {
+  background-color: #1e1e1e;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+body.dark input,
+body.dark button,
+body.dark #expense-list li {
+  background-color: #2c2c2c;
+  color: #fff;
+}
+
+body.dark button:hover {
+  background-color: #00c6ff;
+}
