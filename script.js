@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const nameInput = document.getElementById("expense-name");
   const amountInput = document.getElementById("expense-amount");
   const expenseList = document.getElementById("expense-list");
-  const totalSpan = document.getElementById("total");
+  const totalSpan = document.getElementById("total-amount");
   const modeToggle = document.getElementById("mode-toggle");
 
   let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   expenseList.addEventListener("click", (e) => {
     if (e.target.tagName === "BUTTON") {
-      const id = Number(e.target.getAttribute("data-id"));
+      const id = Number(e.target.getAttribute("data-id")); // <-- convert to Number
       deleteExpense(id);
     }
   });
