@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("expense-form");
   const nameInput = document.getElementById("expense-name");
   const amountInput = document.getElementById("expense-amount");
-  const categoryInput = document.getElementById("expense-category");
   const expenseList = document.getElementById("expense-list");
   const totalSpan = document.getElementById("total");
   const modeToggle = document.getElementById("mode-toggle");
@@ -16,11 +15,11 @@ document.addEventListener("DOMContentLoaded", () => {
   function render() {
     expenseList.innerHTML = "";
     let total = 0;
-    expenses.forEach(({ id, name, amount, category }) => {
+    expenses.forEach(({ id, name, amount }) => {
       total += amount;
       const li = document.createElement("li");
       li.innerHTML = `
-        <span>${category} - ${name}: ₹${amount.toFixed(2)}</span>
+        <span>${name}: ₹${amount.toFixed(2)}</span>
         <button data-id="${id}">Delete</button>
       `;
       expenseList.appendChild(li);
@@ -28,8 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
     totalSpan.textContent = total.toFixed(2);
   }
 
-  function addExpense(name, amount, category) {
-    expenses.push({ id: Date.now(), name, amount, category });
+  function addExpense(name, amount) {
+    expenses.push({ id: Date.now(), name, amount });
     save();
     render();
   }
@@ -44,9 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     const name = nameInput.value.trim();
     const amount = parseFloat(amountInput.value);
-    const category = categoryInput.value;
     if (!name || isNaN(amount) || amount <= 0) return;
-    addExpense(name, amount, category);
+    addExpense(name, amount);
     form.reset();
   });
 
